@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-+9*l%w7r)sjd$s@)_!zl1^if4*zs&2#5eo(=e2%7y=fiwur)%w
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["student-information-tf6z.onrender.com", "localhost", "127.0.0.1"]
 
 
 # Application definition
@@ -48,7 +48,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.whitenoiseMIddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware', 
+    
 ]
 
 ROOT_URLCONF = 'My_Portfolio.urls'
@@ -115,8 +116,10 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
-STATIC_ROOT =BASE_DIR / "staticfiles"
-STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / "staticfiles"
+STATIC_URL = '/static/'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
