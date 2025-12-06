@@ -20,13 +20,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-+9*l%w7r)sjd$s@)_!zl1^if4*zs&2#5eo(=e2%7y=fiwur)%w'
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG =  os.environ.get("DEBUG", "False") == "True"
 
-ALLOWED_HOSTS = ["student-information-tf6z.onrender.com", "localhost", "127.0.0.1"]
 
+ALLOWED_HOSTS =  os.environ.get(
+    "ALLOWED_HOSTS", "localhost,127.0.0.1"
+).split(",")
 
 # Application definition
 
@@ -51,6 +53,7 @@ MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware', 
     
 ]
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 ROOT_URLCONF = 'My_Portfolio.urls'
 
