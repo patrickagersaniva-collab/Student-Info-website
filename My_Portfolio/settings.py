@@ -26,11 +26,8 @@ SECRET_KEY = os.environ.get("SECRET_KEY", "local-secret-key-for-dev")
 DEBUG = os.environ.get("DEBUG", "False") == "True"
 
 
-import os
 
-ALLOWED_HOSTS = os.environ.get(
-    "ALLOWED_HOSTS", "localhost,127.0.0.1"
-).split(",")
+ALLOWED_HOSTS = ['website-student-information.onrender.com', 'localhost', '127.0.0.1']
 
 # Application definition
 
@@ -62,7 +59,7 @@ ROOT_URLCONF = 'My_Portfolio.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / "My_Portfolio_file/templates"],
+        'DIRS': [BASE_DIR / "My_Portfolio_file/templates"], 
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -123,8 +120,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 STATIC_ROOT = BASE_DIR / "staticfiles"
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [BASE_DIR / "My_Portfolio_file/static"]  
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-STATICFILES_DIRS = [BASE_DIR / "My_Portfolio_file/static"] 
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
